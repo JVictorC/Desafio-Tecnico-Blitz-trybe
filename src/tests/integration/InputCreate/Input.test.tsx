@@ -1,11 +1,8 @@
 /* eslint-disable max-len */
-import {Select} from '@mui/material';
 import {
   screen,
   render,
   fireEvent,
-  waitFor,
-  within,
 } from '@testing-library/react';
 import axios from 'axios';
 import MockAdapter from 'axios-mock-adapter';
@@ -16,7 +13,7 @@ import allMethods from '../../../controllers/allMethods';
 import allToDosMock from '../../mocks/allTodos';
 import user from '@testing-library/user-event';
 
-describe.only('Testa a Home', () => {
+describe('Testa a Home', () => {
   const mock = new MockAdapter(axios);
   const createToDoController = jest.spyOn(allMethods, 'createToDoController');
 
