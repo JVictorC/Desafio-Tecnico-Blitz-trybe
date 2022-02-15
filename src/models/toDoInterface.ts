@@ -1,10 +1,10 @@
 interface iToDo {
-  id: String;
-  title: String;
-  description: String;
-  status: String;
-  createAt: String;
-  updatedAt: String;
+  id: string;
+  title: string;
+  description: string;
+  status: string;
+  createAt: string;
+  updatedAt: string;
 }
 
 export default iToDo;
