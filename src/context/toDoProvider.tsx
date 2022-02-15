@@ -1,14 +1,42 @@
 /* eslint-disable require-jsdoc */
-import React, {createContext} from 'react';
+import React, {createContext, useCallback, useEffect, useState} from 'react';
+import getAllToDos from '../controllers/getAllToDos';
+import iToDo from '../models/toDoInterface';
 
 interface iProps {
-  children: JSX.Element
+  children: JSX.Element;
 }
 
-const toDoContext = createContext({});
+interface iToDoContext {
+  isLoading: boolean;
+  toDos: iToDo[]
+}
+
+const toDoContext = createContext<iToDoContext>({
+  isLoading: false,
+  toDos: [],
+});
 
 export function ToDoProvider(props: iProps) {
-  const valueProvider = {};
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [toDos, setToDos] = useState<iToDo[]>([]);
+
+  const getAll = useCallback(async () => {
+    setIsLoading(true);
+    const toDos = await getAllToDos();
+    setIsLoading(false);
+    setToDos(toDos);
+  }, []);
+
+  useEffect(() => {
+    getAll();
+  }, []);
+
+
+  const valueProvider: iToDoContext = {
+    isLoading,
+    toDos,
+  };
 
   return (
     <toDoContext.Provider value={valueProvider}>
