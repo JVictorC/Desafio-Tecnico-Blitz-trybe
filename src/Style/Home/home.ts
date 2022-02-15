@@ -22,3 +22,7 @@ export const InputStyled = styled.form`
   }
 
 `;
+
+export const TextFormStyled = styled.article`
+  padding: 15px;
+`;
