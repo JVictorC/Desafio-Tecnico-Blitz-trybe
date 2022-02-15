@@ -1,5 +1,5 @@
-import { useContext } from "react";
-import toDoContext from "../context/toDoProvider";
+import {useContext} from 'react';
+import toDoContext from '../context/toDoProvider';
 
 
 const useToDoProvider = () => useContext(toDoContext);

@@ -1,4 +1,5 @@
-import React, { createContext } from 'react';
+/* eslint-disable require-jsdoc */
+import React, {createContext} from 'react';
 
 interface iProps {
   children: JSX.Element
@@ -16,4 +17,4 @@ export function ToDoProvider(props: iProps) {
   );
 }
 
-export default toDoContext
+export default toDoContext;
