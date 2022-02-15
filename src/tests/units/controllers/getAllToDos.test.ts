@@ -8,7 +8,7 @@ describe('Testa a Função getAllToDos', () => {
     const mock = new MockAdapter(axios);
     mock.onGet('http://localhost:3001/toDo').reply(200, allToDosMock);
   });
-  test.only('Deveria Retornar um array', async () => {
+  test('Deveria Retornar um array', async () => {
     const allToDos = await getAllToDos();
     expect(Array.isArray(allToDos)).toBe(true);
   });
