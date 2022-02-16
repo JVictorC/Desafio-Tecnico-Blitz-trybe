@@ -19,7 +19,6 @@ export const InputStyled = styled.form`
     padding: 10px;
     margin: 3px 15px;
   }
-
 `;
 
 export const TextFormStyled = styled.article`
@@ -32,6 +31,14 @@ export const LoadingStyled = styled.article`
   display: flex;
   justify-content: center;
   align-items: center;
-
 `;
 
+export const StyledTable = styled.article`
+  margin: 35px 0;
+  padding: 20px;
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;

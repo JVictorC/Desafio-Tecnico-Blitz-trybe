@@ -6,10 +6,10 @@ import {
 } from '@mui/material';
 import React, {useState} from 'react';
 import DialogDescriptionAndStatus from '../components/DialogDescriptionAndStatus';
+import DataTable from '../components/TableToDos';
 import useToDoProvider from '../hooks/useToDoProvider';
 import iToDoCreate from '../models/toDoCreate';
-import iToDo from '../models/toDoInterface';
-import {HomeStyled, InputStyled, LoadingStyled} from '../Style/Home/home';
+import {HomeStyled, InputStyled, LoadingStyled, StyledTable} from '../Style/Home/home';
 
 export default function Home() {
   const [newToDo, setNewToDo] = useState<string | undefined>();
@@ -94,12 +94,9 @@ export default function Home() {
               Criar Novo ToDo
             </Button>
           </InputStyled>
-
-          {toDoProvider.toDos.map((toDo: iToDo) => (
-            <li key={toDo.id}>
-              <p>{toDo.title}</p>
-            </li>
-          ))}
+          <StyledTable>
+            <DataTable />
+          </StyledTable>
         </HomeStyled>
       )}
     </>
