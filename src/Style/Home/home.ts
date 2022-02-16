@@ -3,7 +3,6 @@ import styled from '@emotion/styled';
 export const HomeStyled = styled.section`
   padding: 20px;
   display: flex;
-  border: 1px solid black;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -26,3 +25,13 @@ export const InputStyled = styled.form`
 export const TextFormStyled = styled.article`
   padding: 15px;
 `;
+
+export const LoadingStyled = styled.article`
+  width: 100vh;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+`;
+

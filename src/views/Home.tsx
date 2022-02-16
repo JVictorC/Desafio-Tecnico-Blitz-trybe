@@ -1,14 +1,19 @@
-import {Button, CircularProgress, SelectChangeEvent, TextField} from '@mui/material';
+import {
+  Button,
+  CircularProgress,
+  SelectChangeEvent,
+  TextField,
+} from '@mui/material';
 import React, {useState} from 'react';
 import DialogDescriptionAndStatus from '../components/DialogDescriptionAndStatus';
 import useToDoProvider from '../hooks/useToDoProvider';
 import iToDoCreate from '../models/toDoCreate';
 import iToDo from '../models/toDoInterface';
-import {HomeStyled, InputStyled} from '../Style/Home/home';
+import {HomeStyled, InputStyled, LoadingStyled} from '../Style/Home/home';
 
 export default function Home() {
-  const [newToDo, setNewToDo] = useState<string>();
-  const [description, setDescription] = useState<string>();
+  const [newToDo, setNewToDo] = useState<string | undefined>();
+  const [description, setDescription] = useState<string | undefined>();
   const [status, setStatus] = useState<string>('Em Andamento');
   const toDoProvider = useToDoProvider();
   const [open, setOpen] = React.useState(false);
@@ -38,22 +43,25 @@ export default function Home() {
   };
 
   const handleSubmitNewToDo = async (e: React.FormEvent) => {
+    setOpen(false);
+    setNewToDo(undefined);
+    setDescription(undefined);
+    setStatus('Em Andamento');
     const newToDoCreate: iToDoCreate = {
       title: newToDo as string,
       description: description as string,
       status,
     };
 
-    console.log(newToDoCreate);
-
-    const returnData = await toDoProvider.createToDo(newToDoCreate);
-    console.log(returnData);
+    await toDoProvider.createToDo(newToDoCreate);
   };
 
   return (
     <>
       {toDoProvider.isLoading ? (
-        <CircularProgress />
+        <LoadingStyled>
+          <CircularProgress />
+        </LoadingStyled>
       ) : (
         <HomeStyled>
           <DialogDescriptionAndStatus
@@ -67,7 +75,7 @@ export default function Home() {
 
           <InputStyled onSubmit={openDialog}>
             <TextField
-              id='Teste'
+              id="Teste"
               fullWidth={true}
               label="Adicionar novo ToDo"
               variant="outlined"
